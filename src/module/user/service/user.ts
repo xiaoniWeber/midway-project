@@ -8,10 +8,9 @@ import { UserVO } from '../vo/user';
 
 import { R } from '../../../common/base.error.util';
 import { omit } from 'lodash';
-
 @Provide()
 export class UserService extends BaseService<UserEntity> {
-  @InjectEntityModel(UserEntity)
+  @InjectEntityModel(UserEntity) //注入一个实体对象
   userModel: Repository<UserEntity>;
 
   getModel(): Repository<UserEntity> {

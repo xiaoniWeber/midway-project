@@ -32,3 +32,6 @@ $ npm start
 ### 安装报错
 - 使用 npm i @midwayjs/typeorm@3 typeorm --save
 
+### nanoid运行报错
+- 卸载之后再安装3.3.4版本，，，4.x.x版本会报错
+

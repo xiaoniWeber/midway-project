@@ -1,4 +1,5 @@
 import { MidwayConfig } from '@midwayjs/core';
+import { TokenConfig } from '../interface/token.config';
 export default {
   // use for cookie sign key, should change to your own and keep security
   keys: '1691650921088_3250',
@@ -39,4 +40,8 @@ export default {
       zh_CN: require('../locales/en_US'),
     },
   },
+  token: {
+    expire: 60 * 60 * 2, // 2小时
+    refreshExpire: 60 * 60 * 24 * 7, // 7天
+  } as TokenConfig,
 } as MidwayConfig;
