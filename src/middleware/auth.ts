@@ -20,6 +20,27 @@ export class AuthMiddleware implements IMiddleware<Context, NextFunction> {
 
   resolve() {
     return async (ctx: Context, next: NextFunction) => {
+      const routeInfo = await this.webRouterService.getMatchedRouterInfo(
+        ctx.path,
+        ctx.method
+      );
+      console.log('routeInfo', routeInfo);
+      console.log('notLoginRouters', this.notLoginRouters);
+      if (!routeInfo) {
+        await next();
+        return;
+      }
+
+      if (
+        this.notLoginRouters.some(
+          o =>
+            o.requestMethod === routeInfo.requestMethod &&
+            o.url === routeInfo.url
+        )
+      ) {
+        await next();
+        return;
+      }
       const token = ctx.header.authorization?.replace('Bearer ', '');
       if (!token) {
         throw R.unauthorizedError('未授权');
