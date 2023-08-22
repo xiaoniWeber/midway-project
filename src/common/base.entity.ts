@@ -7,7 +7,8 @@ import {
 export class BaseEntity {
   // 设置主键id 自增
   @PrimaryGeneratedColumn()
-  id?: string;
+  id?: number;
+
   @CreateDateColumn({ comment: '创建时间' })
   createDate?: Date;
   @UpdateDateColumn({ comment: '更新时间' })

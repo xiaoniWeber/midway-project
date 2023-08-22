@@ -4,9 +4,9 @@ import { omit } from 'lodash';
 import { BaseEntity } from './base.entity';
 
 export class BaseDTO<T extends BaseEntity> {
-  @ApiProperty({ description: 'id', nullable: true })
+  @ApiProperty()
   @Rule(RuleType.allow(null))
-  id?: string;
+  id: number;
   toEntity(): T {
     return omit(this, ['createDate', 'updateDate']) as unknown as T;
   }

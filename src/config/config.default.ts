@@ -26,6 +26,11 @@ export default {
       },
     },
   },
+  validate: {
+    validationOptions: {
+      allowUnknown: true,
+    },
+  },
   redis: {
     client: {
       port: 6379, // Redis port

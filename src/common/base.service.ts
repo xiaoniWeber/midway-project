@@ -21,7 +21,7 @@ export abstract class BaseService<T extends BaseEntity> {
     await this.getModel().remove(entity);
   }
 
-  async getById(id: string): Promise<T> {
+  async getById(id: number): Promise<T> {
     return await this.getModel()
       .createQueryBuilder('model')
       .where('model.id = :id', { id })

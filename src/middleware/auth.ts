@@ -41,6 +41,7 @@ export class AuthMiddleware implements IMiddleware<Context, NextFunction> {
         await next();
         return;
       }
+      console.log('ctx.header.authorization', ctx.header);
       const token = ctx.header.authorization?.replace('Bearer ', '');
       if (!token) {
         throw R.unauthorizedError('未授权');
